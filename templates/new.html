@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{%block title %}New Paste - {{ super() }}{% endblock %}
+{%block caption %}New Paste{% endblock %}
+
+{% block content %}
+
+  <form action="/" method="post">
+    <table cellspacing="1" cellpadding="0">
+        <tr>
+            <td width="15%" class="label">Title:</td>
+            <td>
+                <input size="100" type="text" name="title" id="title" value="{{ title|e }}" />
+            </td>
+        </tr>
+        <tr>
+            <td width="15%" style="vertical-align: top;" class="label">Content:</td>
+            <td>
+                <textarea name="code" rows="15" cols="76">{{ code|e }}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td width="15%" class="label">Author:</td>
+            <td>
+                <input type="text" name="author" id="author" value="{{ author|e }}" />
+            </td>
+        </tr>
+        <tr>
+            <td width="15%" class="label">Private:</td>
+            <td>
+                <input type="checkbox" name="private" id="private" {% if private %}checked{% endif %} />
+            </td>
+        </tr>
+        <tr>
+            <td width="15%" class="label">Language:</td>
+            <td>
+                <select style="width: 250px;" name="language">
+                {%- for caption, key in languages %}
+                    <option value="{{ key }}" {% if language == key %} selected="selected" {% endif %}>
+                    {{ caption|e }}
+                    </option>
+                {%- endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" value="Paste!" class="button" />
+            </td>
+        </tr>
+    </table>
+  </form>
+
+
+    {# TODO handle errors #}
+    {# TODO handle parent posts #}
+
+{% endblock %}
+
+<!--
+vim:ft=htmldjango:sw=2:ts=2:sts=2
+-->

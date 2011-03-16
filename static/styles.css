@@ -1,0 +1,222 @@
+body {
+    background: #252525 url(images/body.gif);
+    color: #A0A0A0;
+    font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    margin: 0;
+    padding: 5px;
+}
+
+a, a:visited {
+    color: #848484;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #CAA715;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+input, textarea, select {
+    border: 1px solid #545454;
+    background-color: #232323;
+    padding: 1px;
+    color: #a0a0a0;
+}
+
+input.button {
+    padding: 3px;
+}
+
+textarea {
+    font-family: 'Bitstream Vera Sans Mono', monospace;
+    font-size: 13px;
+    width: 98.5%;
+    margin: 5px 5px 4px;;
+}
+
+.discrete {
+    color: #545454;
+}
+
+.rounded {
+    border: 1px solid #4F4F4F;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.section {
+    -webkit-border-radius: 5px 2px;
+    -moz-border-radius: 5px 2px;
+}
+
+.caption {
+    background-color: #272727;
+    position: relative;
+    height: 23px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #c4c4c4;
+    text-decoration: underline;
+    padding-top: 6px;
+    border-bottom: 1px solid #393939;
+}
+
+.caption .decoration {
+    position: absolute;
+}
+.caption .left {
+    top: -1px;
+    left: -1px;
+}
+.caption .right {
+    top: -1px;
+    right: -1px;
+}
+
+.content {
+    background-color: black;
+    padding: 0px;
+    margin-bottom: 1px;
+}
+
+/* LOGO */
+#logo {
+    background: #222;
+    min-width: 920px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+#logo img {
+    margin: 0 auto;
+    margin-bottom: -3px;
+}
+
+#logo .decoration {
+    position: absolute;
+    width: 80px;
+    height: 66px;
+}
+#logo .left {
+    top: -1px;
+    left: -1px;
+}
+#logo .right {
+    top: -1px;
+    right: -1px;
+}
+
+/* NAVIGATION */
+
+#navigation {
+    font-size: 11px;
+    text-align: center;
+}
+#navigation li {
+    display: inline;
+    padding: 0 3px;
+}
+
+/* PAGE */
+
+#page {
+    background: #222;
+    padding: 7px 7px;
+}
+
+#page #info {
+    margin-bottom: 10px;
+}
+
+#page .content table {
+    width: 100%;
+    border-spacing: 2px;
+}
+
+#page .content table {
+    border-spacing: 1px;
+}
+#page .content table th {
+    color: #6a6a6a;
+    vertical-align: middle;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    background: #252525 url(images/body.gif);
+    border: 1px solid #393939;
+    height: 27px;
+}
+#page .content table td {
+    background-color: #1a1a1a;
+    border: 1px solid #393939;
+}
+
+#page .content table td.label {
+    padding: 4px;
+    font-weight: bold;
+    font-size: 11px;
+    vertical-align: middle;
+    height: 20px;
+}
+#page .content table td input {
+    font-size: 11px;
+    margin-left: 4px;
+}
+#page .content table td select {
+    margin-left: 4px;
+}
+
+#pastes td {
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px;
+}
+#pastes .data {
+    text-align: left;
+}
+#pastes .id {
+    font-weight: bold;
+}
+
+#pastes .author em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+#pastes .preview {
+    text-align: left;
+    vertical-align: top:
+}
+
+#view .title {
+    text-align: left !important;
+    padding-left: 4px;
+}
+#view .paste {
+    margin: 4px;
+    font-size: 11px;
+}
+#view .details {
+    padding: 4px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: top;
+    line-height: 18px;
+}
+#view .details em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* FOOTER */
+#footer {
+    padding: 10px 0 5px;
+    text-align: center;
+}

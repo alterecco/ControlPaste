@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{%block title %}Viewing Paste: {{ paste.uri }} - {{ super() }}{% endblock %}
+{%block caption %}Viewing Paste: {{ paste.uri }}{% endblock %}
+
+{% block content %}
+
+  <table id="view" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%">Details</th>
+      <th class="title">{% if paste.title %}{{ paste.title }}{% endif %}</th>
+    </tr>
+    <tr>
+      <td class="details">
+        {% if paste.author %}<em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em><br />{% endif %}
+        {{ paste.human_date }}<br />
+        {{ paste.human_language }}
+
+      </td>
+      <td>
+        {{ paste.highlighted|safe }}
+      </td>
+    </tr>
+  </table>
+
+{% endblock %}
+
+<!--
+vim:ft=htmldjango:sw=2:ts=2:sts=2
+-->

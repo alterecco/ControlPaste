@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>{% block title %}Pastebin{% endblock %}</title>
+      <link rel="stylesheet" href="/static/styles.css" type="text/css" />
+      <link rel="stylesheet" href="/static/highlight.css" type="text/css" />
+    </head>
+    <body>
+      <div id="logo" class="rounded">
+        <img src="/static/images/logo_left.gif" class="decoration left" />
+        <a href="/"><img src="/static/images/logo.png" /></a>
+        <img src="/static/images/logo_right.gif" class="decoration right" />
+      </div>
+      <ul id="navigation">
+        <li class="first">
+          <a href="/">New Paste</a>
+        </li>
+        <li>•</li>
+        <li>
+          <a href="/all/">All Pastes</a>
+        </li>
+        {% if session_author %}
+          <li>•</li>
+          <li>
+            <a href="{{ url_for('author', author=session_author) }}">Your Pastes</a>
+          </li>
+        {% endif %}
+      </ul>
+      <div id="page" class="rounded">
+        <div id="info">
+          {% if session_author %}Welcome back {{ session_author }}{% endif %}
+        </div>
+        <div class="section rounded">
+          <div class="caption">
+            <img src="/static/images/hdr_left.gif" class="decoration left" />
+            {% block caption %}{% endblock %}
+            <img src="/static/images/hdr_right.gif" class="decoration right" />
+          </div>
+          <div class="content">
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <span class="discrete">Powered by Pure Will <span style="font-variant: small-caps">(tm)</span></span>
+      </div>
+    </body>
+</html>
+<!--
+vim:ft=htmldjango:sw=2:ts=2:sts=2
+-->

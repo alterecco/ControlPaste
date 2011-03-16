@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{%block title %}All Pastes {% if author %} by {{ author }}{% endif %} - {{ super() }}{% endblock %}
+{%block caption %}All Pastes {% if author %} by {{ author }}{% endif %}{% endblock %}
+
+{% block content %}
+  {% if pastes %}
+    <table id="pastes" cellspacing="1" cellpadding="0">
+        <tr>
+            <th width="8%">Paste ID</th>
+            <th width=""></th>
+            <th width="15%">Language</th>
+            <th width="15%">Author</th>
+            <th width="15%">Date</th>
+        </tr>
+        {% for paste in pastes %}
+          <tr>
+              <td class="id"><a href="{{ url_for('view', uri=paste.uri) }}">{{ paste.uri }}</a></td>
+              <td class="data">
+                {%- if paste.title %}{{ paste.title }}{% endif %}
+                <!-- <span class="discrete">(Click to preview)</span> -->
+              </td>
+              <td class="language">{{ paste.human_language }}</td>
+              <td class="author">
+                {% if paste.author %}
+                  <em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em>
+                {% else %}
+                  anonymous
+                {% endif %}
+              </td>
+              <td class="date">{{ paste.human_date }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="4" class="preview">
+              {{ paste.preview|safe }}
+            </td>
+          </tr>
+        {% endfor %}
+    </table>
+  {% else %}
+    <em>No pastes found</em>
+  {% endif %}
+
+{% endblock %}
+<!--
+vim:ft=htmldjango:sw=2:ts=2:sts=2
+-->
