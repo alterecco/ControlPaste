@@ -10,11 +10,11 @@ from flask import session
 from flask import abort
 from flask import Response
 
-from paste import app
+from ControlPaste import app
 
-from paste.database import db
-from paste.models import Paste
-from paste.lib.hilite import languages
+from ControlPaste.database import db
+from ControlPaste.models import Paste
+from ControlPaste.lib.hilite import languages
 
 app.secret_key = 'cup%oapho7yuaN7IexaiNg8tichi7Hir6igi'
 

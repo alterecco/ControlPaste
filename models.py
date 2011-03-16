@@ -4,11 +4,9 @@ from sqlalchemy import Column, Integer, String, Text, ForeignKey, DateTime, Bool
 from sqlalchemy.orm import relation, backref
 from werkzeug import cached_property
 
-from paste.database import db
-from paste.lib import hilite
-# from paste.lib.hilite import check_lang, name
-# from paste.lib.hilite import hilite
-from paste.lib.urigen import encode_uri, decode_uri
+from ControlPaste.database import db
+from ControlPaste.lib import hilite
+from ControlPaste.lib.urigen import encode_uri, decode_uri
 
 class Paste(db.Base):
     __tablename__ = 'pastes'

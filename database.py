@@ -14,5 +14,5 @@ db.Base = declarative_base()
 db.Base.query = db.session.query_property()
 
 def init():
-    import paste.models
+    import ControlPaste.models
     db.Base.metadata.create_all(bind=db.engine)
