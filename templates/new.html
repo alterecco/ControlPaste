@@ -35,11 +35,20 @@
             <td width="15%" class="label">Language:</td>
             <td>
                 <select style="width: 250px;" name="language">
-                {%- for caption, key in languages %}
-                    <option value="{{ key }}" {% if language == key %} selected="selected" {% endif %}>
-                    {{ caption|e }}
-                    </option>
-                {%- endfor %}
+                  <optgroup label="Common">
+                  {%- for caption, key in preferred %}
+                      <option value="{{ key }}" {% if language == key %} selected="selected" {% endif %}>
+                      {{ caption|e }}
+                      </option>
+                  {%- endfor %}
+                  </optgroup>
+                  <optgroup label="Various">
+                  {%- for caption, key in languages %}
+                      <option value="{{ key }}" {% if language == key %} selected="selected" {% endif %}>
+                      {{ caption|e }}
+                      </option>
+                  {%- endfor %}
+                  </optgroup>
                 </select>
             </td>
         </tr>

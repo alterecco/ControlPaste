@@ -4,36 +4,38 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
 ## list of languages we want to support
-LANGUAGES = [  'ahk'
-             , 'bash'
-             , 'batch'
-             , 'bbcode'
-             , 'c'
-             , 'common-lisp'
-             , 'cpp'
-             , 'css'
-             , 'd'
-             , 'diff'
-             , 'html'
-             , 'javascript'
-             , 'go'
-             , 'ini'
-             , 'irc'
-             , 'java'
-             , 'lua'
-             , 'make'
-             , 'mysql'
-             , 'perl'
-             , 'php'
-             , 'postscript'
-             , 'python3'
-             , 'python'
-             , 'rb'
-             , 'sql'
-             , 'text'
-             , 'xml'
-             , 'vim'
-            ]
+LANGUAGES = [
+          'text'
+        , 'xml'
+        , 'common-lisp'
+        , 'bbcode'
+        , 'bash'
+        , 'javascript'
+        , 'css'
+        , 'html'
+        , 'c'
+        , 'ahk'
+        , 'batch'
+        , 'cpp'
+        , 'd'
+        , 'diff'
+        , 'go'
+        , 'ini'
+        , 'irc'
+        , 'java'
+        , 'lua'
+        , 'make'
+        , 'mysql'
+        , 'perl'
+        , 'php'
+        , 'postscript'
+        , 'python3'
+        , 'python'
+        , 'rb'
+        , 'sql'
+        , 'vim'
+]
+PREFERRED = ['text', 'xml', 'common-lisp']
 
 languages = []
 for l in get_all_lexers():
@@ -41,6 +43,13 @@ for l in get_all_lexers():
         languages.append((l[0], l[1][0]))
 
 languages.sort(key=lambda x: x[1].lower())
+
+preferred_languages = []
+for l in languages:
+    if l[1] in PREFERRED:
+        preferred_languages.append(l)
+        ## delete the preferred languages from languages list
+        languages.remove(l)
 
 ## confirm that `lang' is a valid language
 def check(lang):

@@ -14,7 +14,7 @@ from ControlPaste import app
 
 from ControlPaste.database import db
 from ControlPaste.models import Paste
-from ControlPaste.lib.hilite import languages
+from ControlPaste.lib.hilite import languages, preferred_languages
 
 app.secret_key = 'cup%oapho7yuaN7IexaiNg8tichi7Hir6igi'
 
@@ -69,6 +69,7 @@ def new():
         private=private,
         language=language,
         languages=languages,
+        preferred=preferred_languages,
     )
 
 @app.route('/view/<uri>/')
