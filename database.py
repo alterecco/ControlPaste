@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 db = ModuleType('db')
 
-db.engine = create_engine('sqlite:///{path}/pastes.db'.format(os.path.abspath(os.curdir)),
+db.engine = create_engine('sqlite:///{path}/pastes.db'.format(path=os.path.abspath(os.curdir)),
                           convert_unicode=True)
 db.session = scoped_session(sessionmaker(autocommit=False, autoflush=False,
                                          bind=db.engine))
