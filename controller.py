@@ -114,11 +114,16 @@ def all(page=1):
 @app.route('/author/<author>/<int:page>/')
 def author(author, page=1):
     session_author = session.get('author', '')
-    pastes = Paste.get_all(session['user']).limit(10).offset(10 * (page - 1)).all()
+    pastes = Paste.get_all(author).limit(10).offset(10 * (page - 1)).all()
 
-    print(pastes)
     if not pastes and page != 1:
         abort(404)
+
+    ## weed out private pastes if the user
+    ## of the paste does not match the session user
+    for paste in pastes:
+        if not paste.user == session['user']:
+            pastes.remove(paste)
 
     ## TODO handle pagination
     return render_template(
