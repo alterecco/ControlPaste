@@ -12,6 +12,11 @@
     </tr>
     <tr>
       <td class="details">
+        {% if paste.user == user %}
+          {% if paste.private %}
+            <em class="private">Private</em><br />
+          {% endif %}
+        {% endif %}
         {% if paste.author %}<em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em><br />{% endif %}
         {{ paste.human_date }}<br />
         {{ paste.human_language }}

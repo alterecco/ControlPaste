@@ -18,7 +18,6 @@
               <td class="id"><a href="{{ url_for('view', uri=paste.uri) }}">{{ paste.uri }}</a></td>
               <td class="data">
                 {%- if paste.title %}{{ paste.title }}{% endif %}
-                <!-- <span class="discrete">(Click to preview)</span> -->
               </td>
               <td class="language">{{ paste.human_language }}</td>
               <td class="author">
@@ -31,7 +30,13 @@
               <td class="date">{{ paste.human_date }}</td>
           </tr>
           <tr>
-            <td></td>
+            <td class="details">
+              {% if paste.user == user %}
+                {% if paste.private %}
+                  <em class="private">Private</em><br />
+                {% endif %}
+              {% endif %}
+            </td>
             <td colspan="4" class="preview">
               {{ paste.preview|safe }}
             </td>

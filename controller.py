@@ -85,7 +85,8 @@ def view(uri, raw=False):
         return render_template(
             'view.html',
             session_author=session_author,
-            paste=paste
+            paste=paste,
+            user=session['user'],
         )
 
 @app.route('/raw/<uri>/')
@@ -106,13 +107,14 @@ def all(page=1):
         "all.html",
         session_author=session_author,
         pastes=pastes,
+        user=session['user'],
     )
 
 @app.route('/author/<author>/')
 @app.route('/author/<author>/<int:page>/')
 def author(author, page=1):
     session_author = session.get('author', '')
-    pastes = Paste.get_all(author).limit(10).offset(10 * (page - 1)).all()
+    pastes = Paste.get_all(session['user']).limit(10).offset(10 * (page - 1)).all()
 
     print(pastes)
     if not pastes and page != 1:
@@ -124,6 +126,7 @@ def author(author, page=1):
         author=author,
         session_author=session_author,
         pastes=pastes,
+        user=session['user'],
     )
 
 

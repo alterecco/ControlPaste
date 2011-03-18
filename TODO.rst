@@ -2,10 +2,6 @@
 
 * Implement expiry time
 
-* Improve syntax color scheme
-
-* Show a users private pastes
-
 * Pagination on the "all pastes" pages
 
 * Add a link to raw paste
@@ -23,3 +19,11 @@
 * Javascript goodness?
 
 * Consider showing times in "time elapsed"
+
+* add tscript syntax highlighting
+
+* add an option to highlight lines
+
+* add linenumbers (and a toggle)
+
+* multiple textfield pastes (like gist.github.com)

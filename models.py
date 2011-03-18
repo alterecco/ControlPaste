@@ -74,11 +74,12 @@ class Paste(db.Base):
         return Paste.query.filter(Paste.id == id).first()
 
     @staticmethod
-    def get_all(author=None):
-        query = Paste.query.filter(Paste.private == False)
-
-        if author:
-            query = query.filter(Paste.author == author)
+    def get_all(user=None):
+        if user:
+            ## author will be the user hash
+            query = Paste.query.filter(Paste.user == user)
+        else:
+            query = Paste.query.filter(Paste.private == False)
 
         return query.order_by(Paste.date.desc())
 

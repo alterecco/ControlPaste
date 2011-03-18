@@ -85,6 +85,22 @@ textarea {
     margin-bottom: 1px;
 }
 
+.details {
+    padding: 4px !important;
+    font-size: 11px !important;
+    text-align: center !important;
+    vertical-align: top !important;
+    line-height: 18px !important;
+}
+.details em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.details .private {
+    color: #993333;
+}
+
 /* LOGO */
 #logo {
     background: #222;
@@ -203,18 +219,6 @@ textarea {
     margin: 4px;
     font-size: 11px;
 }
-#view .details {
-    padding: 4px;
-    font-size: 11px;
-    text-align: center;
-    vertical-align: top;
-    line-height: 18px;
-}
-#view .details em {
-    font-weight: bold;
-    font-style: normal;
-}
-
 /* FOOTER */
 #footer {
     padding: 10px 0 5px;
