@@ -122,7 +122,7 @@ def author(author, page=1):
     ## weed out private pastes if the user
     ## of the paste does not match the session user
     for paste in pastes:
-        if not paste.user == session['user']:
+        if not paste.user == session['user'] and paste.private:
             pastes.remove(paste)
 
     ## TODO handle pagination
