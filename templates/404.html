@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 
+{%block title %}404: Not Found - {{ super() }}{% endblock %}
+{%block caption %}404{% endblock %}
+
 {% block content %}
+    <div style="text-align: center; font-size: 13px; font-weight: bold;">Not Found</div>
 {% endblock %}
 
 <!--
