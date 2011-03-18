@@ -17,3 +17,9 @@
 * Log/Show size of paste? (in kb)
 
 * Show current time
+
+* Print some easy to understand information about how to use pastebin
+
+* Javascript goodness?
+
+* Consider showing times in "time elapsed"
