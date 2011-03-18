@@ -59,6 +59,9 @@ def name(lang):
     for x in languages:
         if x[1] == lang:
             return x[0]
+    for x in preferred_languages:
+        if x[1] == lang:
+            return x[0]
     return "Unknown"
 
 def parse(code, lang, lines=False):
