@@ -34,7 +34,9 @@
               {% if paste.user == user %}
                 {% if paste.private %}
                   <em class="private">Private</em><br />
+                  <hr />
                 {% endif %}
+                <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a>
               {% endif %}
             </td>
             <td colspan="4" class="preview">
@@ -44,7 +46,7 @@
         {% endfor %}
     </table>
   {% else %}
-    <em>No pastes found</em>
+    <div class="full">No pastes found</div>
   {% endif %}
 
 {% endblock %}

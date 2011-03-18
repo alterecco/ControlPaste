@@ -101,6 +101,20 @@ textarea {
     color: #993333;
 }
 
+.details hr {
+    border: 0;
+    height: 2px;
+    background-color: #292929;
+}
+
+.full {
+    background-color: #1a1a1a;
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 /* LOGO */
 #logo {
     background: #222;
@@ -148,6 +162,12 @@ textarea {
 
 #page #info {
     margin-bottom: 10px;
+}
+#page #info #messages {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #993333;
 }
 
 #page .content table {

@@ -28,7 +28,18 @@
       </ul>
       <div id="page" class="rounded">
         <div id="info">
-          {% if session_author %}Welcome back {{ session_author }}{% endif %}
+          <div id="welcome">
+            {% if session_author %}Welcome back {{ session_author }}{% endif %}
+          </div>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div id="messages">
+                {% for m in messages %}
+                  <p>{{ m }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
         </div>
         <div class="section rounded">
           <div class="caption">

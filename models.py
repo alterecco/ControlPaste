@@ -82,6 +82,10 @@ class Paste(db.Base):
 
         return query.order_by(Paste.date.desc())
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
     def save(self):
         db.session.add(self)
         db.session.flush()

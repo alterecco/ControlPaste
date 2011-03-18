@@ -9,6 +9,7 @@ from flask import url_for
 from flask import session
 from flask import abort
 from flask import Response
+from flask import flash
 
 from ControlPaste import app
 
@@ -132,6 +133,33 @@ def author(author, page=1):
         session_author=session_author,
         pastes=pastes,
         user=session['user'],
+    )
+
+@app.route('/delete/', methods=['POST'])
+@app.route('/delete/<uri>')
+def delete(uri=None):
+    session_author = session.get('author', '')
+
+    uri = request.form.get('uri', uri)
+    paste = Paste.get(uri)
+    if not paste:
+        abort(404)
+
+    if request.method == 'POST':
+
+        if paste.user != session['user']:
+            abort(403)
+
+        paste.delete()
+        flash("Deleted Paste")
+
+        return redirect(url_for('all'))
+
+    return render_template(
+        'delete.html',
+        paste=paste,
+        user=session['user'],
+        session_author=session_author,
     )
 
 
