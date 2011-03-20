@@ -21,9 +21,10 @@
         {{ paste.human_date }}<br />
         {{ paste.human_language }}<br />
         <hr />
-        <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a>
+        <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a><br />
+        <a href="{{ url_for('raw', uri=paste.uri) }}">Raw</a>
       </td>
-      <td>
+      <td valign="top">
         {{ paste.highlighted|safe }}
       </td>
     </tr>

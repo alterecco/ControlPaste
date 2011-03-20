@@ -36,10 +36,11 @@
                   <em class="private">Private</em><br />
                   <hr />
                 {% endif %}
-                <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a>
+                <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a><br />
               {% endif %}
+              <a href="{{ url_for('raw', uri=paste.uri) }}">Raw</a>
             </td>
-            <td colspan="4" class="preview">
+            <td colspan="4" class="preview" valign="top">
               {{ paste.preview|safe }}
             </td>
           </tr>

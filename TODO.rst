@@ -16,7 +16,7 @@
 
 * Javascript goodness?
 
-* Consider showing times in "time elapsed"
+* Consider showing times in "time elapsed" style
 
 * add tscript syntax highlighting
 
@@ -31,5 +31,4 @@
 * Style the error pages
 
 * Implement parent/child relations (reply to)
-
   * When doing this, make sure to handle 'delete' properly
