@@ -82,7 +82,13 @@ def view(uri, raw=False):
         abort(404)
 
     if raw:
-        return Response(paste.code, 200, mimetype='text/plain; charset=utf-8')
+        ## weed out @h@ lines
+        code = paste.code.splitlines()
+        for idx, line in enumerate(code):
+            if line[0:3] == '@h@':
+                code[idx] = line[3:]
+        code = '\n'.join(code)
+        return Response(code, 200, mimetype='text/plain; charset=utf-8')
     else:
         return render_template(
             'view.html',
