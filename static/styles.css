@@ -152,31 +152,6 @@ textarea {
 
 /* PAGE */
 
-/*
-#pastes td {
-    font-size: 11px;
-    text-align: center;
-    vertical-align: middle;
-    padding: 4px;
-}
-#pastes .data {
-    text-align: left;
-}
-#pastes .id {
-    font-weight: bold;
-}
-
-#pastes .author em {
-    font-weight: bold;
-    font-style: normal;
-}
-
-#pastes .preview {
-    text-align: left;
-    vertical-align: top:
-}
-*/
-
 #page {
     background: #222;
     padding: 7px 7px;
@@ -267,21 +242,27 @@ textarea {
     border: 1px solid #393939;
 }
 
-#content .detail .code {
+#content .detail .highlighted {
     background-color: #1a1a1a;
     border: 1px solid #393939;
     font-family: 'Bitstream Vera Sans Mono', monospace;
     font-size: 12px;
     overflow: auto;
     line-height: normal;
-    margin: 1px 1px 1px 1px;
     padding: 5px;
     margin: 5px 0px 10px;
 }
 
-#content .detail .code .linenos {
-    background: #252525 url(images/body.gif);
-    padding: 0 5px 0 15px;
+#content .detail .highlighted .lineno {
+    border-right: 1px solid #393939;
+    padding-right: 5px;
+    text-align: right;
+    min-width: 30px;
+    display: inline-block;
+}
+
+#content .detail .highlighted .code {
+    padding: 5px;
 }
 
 /* NEW CONTENT */

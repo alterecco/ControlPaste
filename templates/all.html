@@ -30,7 +30,7 @@
         Posted on {{paste.human_date}}
         {% if paste.author %}by <em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em>{% endif %}
         as {{ paste.human_language }}
-        <div class="code">
+        <div class="highlighted">
           {{ paste.preview|safe }}
         </div>
       </div>
