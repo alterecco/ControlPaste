@@ -5,30 +5,33 @@
 
 {% block content %}
 
-  <table id="view" cellspacing="1" cellpadding="0">
-    <tr>
-      <th width="15%">Details</th>
-      <th class="title">{% if paste.title %}{{ paste.title }}{% endif %}</th>
-    </tr>
-    <tr>
-      <td class="details">
-        {% if paste.user == user %}
-          {% if paste.private %}
-            <em class="private">Private</em><br />
-          {% endif %}
-        {% endif %}
-        {% if paste.author %}<em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em><br />{% endif %}
-        {{ paste.human_date }}<br />
-        {{ paste.human_language }}<br />
-        <hr />
-        <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a><br />
-        <a href="{{ url_for('raw', uri=paste.uri) }}">Raw</a>
-      </td>
-      <td valign="top">
-        {{ paste.highlighted|safe }}
-      </td>
-    </tr>
-  </table>
+  <div class="head">
+    <div class="title">
+      <a href="{{ url_for('view', uri=paste.uri) }}">
+        {{ paste.uri }}
+        {% if paste.title %} - {{ paste.title }}{% endif %}
+      </a>
+    </div>
+    <div class="links">
+      <a href="{{ url_for('raw', uri=paste.uri) }}">Raw</a>
+      <span class="separator">•</span>
+      <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a>
+    </div>
+
+  </div>
+  <div class="detail">
+    {% if paste.user == user %}
+      {% if paste.private %}
+        <em class="private">Private Paste</em><br />
+      {% endif %}
+    {% endif %}
+    Posted on {{paste.human_date}}
+    {% if paste.author %}by <em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em>{% endif %}
+    as {{ paste.human_language }}
+    <div class="code">
+      {{ paste.highlighted|safe }}
+    </div>
+  </div>
 
 {% endblock %}
 

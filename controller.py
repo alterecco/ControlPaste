@@ -21,6 +21,7 @@ app.secret_key = 'cup%oapho7yuaN7IexaiNg8tichi7Hir6igi'
 
 @app.before_request
 def before_request():
+    session.permanent = True
     session.permanent_session_lifetime = 31556926
     if not 'user' in  session:
         session['user'] = sha1('{0}|{1}'.format(random(), time.time())).hexdigest()

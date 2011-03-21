@@ -4,7 +4,47 @@
 {%block caption %}All Pastes {% if author %} by {{ author }}{% endif %}{% endblock %}
 
 {% block content %}
+
   {% if pastes %}
+    {% for paste in pastes %}
+      <div class="head">
+        <div class="title">
+          <a href="{{ url_for('view', uri=paste.uri) }}">
+            {{ paste.uri }}
+            {% if paste.title %} - {{ paste.title }}{% endif %}
+          </a>
+        </div>
+        <div class="links">
+          <a href="{{ url_for('raw', uri=paste.uri) }}">Raw</a>
+          {% if paste.user == user %}
+            <span class="separator">•</span>
+            <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a>
+          {% endif %}
+        </div>
+
+      </div>
+      <div class="detail">
+          {% if paste.private %}
+            <em class="private">Private Paste</em><br />
+          {% endif %}
+        Posted on {{paste.human_date}}
+        {% if paste.author %}by <em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em>{% endif %}
+        as {{ paste.human_language }}
+        <div class="code">
+          {{ paste.preview|safe }}
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="full">No pastes found</div>
+  {% endif %}
+
+{% endblock %}
+<!--
+vim:ft=htmldjango:sw=2:ts=2:sts=2
+-->
+
+{#
     <table id="pastes" cellspacing="1" cellpadding="0">
         <tr>
             <th width="8%">Paste ID</th>
@@ -41,16 +81,9 @@
               <a href="{{ url_for('raw', uri=paste.uri) }}">Raw</a>
             </td>
             <td colspan="4" class="preview" valign="top">
-              {{ paste.preview|safe }}
             </td>
           </tr>
         {% endfor %}
     </table>
-  {% else %}
-    <div class="full">No pastes found</div>
   {% endif %}
-
-{% endblock %}
-<!--
-vim:ft=htmldjango:sw=2:ts=2:sts=2
--->
+  #}
