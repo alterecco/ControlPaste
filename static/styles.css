@@ -279,6 +279,11 @@ textarea {
     margin: 5px 0px 10px;
 }
 
+#content .detail .code .linenos {
+    background: #252525 url(images/body.gif);
+    padding: 0 5px 0 15px;
+}
+
 /* NEW CONTENT */
 
 #content table {

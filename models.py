@@ -47,7 +47,7 @@ class Paste(db.Base):
 
     @cached_property
     def highlighted(self):
-        return hilite.parse(self.code, self.language)
+        return hilite.parse(self.code, self.language, True)
 
     @cached_property
     def preview(self, lines=5):
