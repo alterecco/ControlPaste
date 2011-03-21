@@ -64,9 +64,11 @@ def name(lang):
             return x[0]
     return "Unknown"
 
-def parse(code, lang, lines=False):
+def parse(code, lang, lines=False, hlist=[]):
     lexer = get_lexer_by_name(lang, stripall=True)
-    # formatter = HtmlFormatter(linenos=lines, noclasses=True, style='emacs')
-    formatter = HtmlFormatter(linenos=lines, cssclass='paste')
+    if lines:
+        formatter = HtmlFormatter(linenos='inline', lineanchors="line", anchorlinenos=True, cssclass='paste', hl_lines=hlist)
+    else:
+        formatter = HtmlFormatter(cssclass='paste', hl_lines=hlist)
     return highlight(code, lexer, formatter)
 
