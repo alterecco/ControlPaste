@@ -64,11 +64,20 @@ def name(lang):
             return x[0]
     return "Unknown"
 
-def parse(code, lang, lines=False, hlist=[]):
+def parse(code, lang, lines=False):
     lexer = get_lexer_by_name(lang, stripall=True)
     if lines:
+        hlist = []
+        #loop over the lines of code and find the ones to highlight
+        code = code.splitlines()
+        for idx, line in enumerate(code):
+            if line[0:3] == '@h@':
+                hlist.append(idx + 1)
+                code[idx] = line[3:]
+        print(hlist)
+        code = '\n'.join(code)
         formatter = HtmlFormatter(linenos='inline', lineanchors="line", anchorlinenos=True, cssclass='paste', hl_lines=hlist)
     else:
-        formatter = HtmlFormatter(cssclass='paste', hl_lines=hlist)
+        formatter = HtmlFormatter(cssclass='paste')
     return highlight(code, lexer, formatter)
 
