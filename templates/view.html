@@ -14,8 +14,10 @@
     </div>
     <div class="links">
       <a href="{{ url_for('raw', uri=paste.uri) }}">Raw</a>
-      <span class="separator">•</span>
-      <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a>
+      {% if paste.user == user %}
+        <span class="separator">•</span>
+        <a href="{{ url_for('delete', uri=paste.uri) }}">Delete</a>
+      {% endif %}
     </div>
 
   </div>

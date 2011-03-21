@@ -1,7 +1,8 @@
 * Pagination on the "all pastes" pages
 * Show count of users pastes
 * add linenumber toggle
-* add an option to highlight lines
+  * move back to table style... perhaps subclass?
+* perhaps store two versions of the paste in db... the pure, and the highlighted
 * add tscript syntax highlighting
 * Implement expiry time
 * Add a download link
