@@ -306,6 +306,12 @@ textarea {
     margin-left: 4px;
 }
 
+/* HONEYPOT */
+
+.hullahoop {
+  display: none;
+}
+
 /* FOOTER */
 #footer {
     padding: 10px 0 5px;
