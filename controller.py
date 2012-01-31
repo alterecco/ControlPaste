@@ -43,28 +43,27 @@ def new():
 
     if request.method == 'POST':
         ## first we check our honeypot
-        if 'really' in request.form:
-          return render_template('honeypot.html')
+        if 'really' not in request.form:
 
-        code = request.form['code']
-        language = request.form['language']
-        author = request.form['author']
-        title = request.form['title']
-        private = 'private' in request.form
-        if 'parent' in request.form:
-            parent = Paste.get(request.form['parent'])
+            code = request.form['code']
+            language = request.form['language']
+            author = request.form['author']
+            title = request.form['title']
+            private = 'private' in request.form
+            if 'parent' in request.form:
+                parent = Paste.get(request.form['parent'])
 
-        if code and language:
-            paste = Paste(code, language, session['user'], title, author,
-                          parent, private)
-            paste.save()
+            if code and language:
+                paste = Paste(code, language, session['user'], title, author,
+                              parent, private)
+                paste.save()
 
-            ## set some defaults for next time around
-            session['language'] = language
-            session['author'] = author
+                ## set some defaults for next time around
+                session['language'] = language
+                session['author'] = author
 
-            ## show the paste
-            return redirect(url_for('view', uri=paste.uri))
+                ## show the paste
+                return redirect(url_for('view', uri=paste.uri))
 
     return render_template(
         'new.html',
