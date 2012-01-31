@@ -42,6 +42,10 @@ def new():
     private = False
 
     if request.method == 'POST':
+        ## first we check our honeypot
+        if 'really' in request.form:
+          return render_template('honeypot.html')
+
         code = request.form['code']
         language = request.form['language']
         author = request.form['author']
