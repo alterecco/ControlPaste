@@ -31,7 +31,7 @@
     {% if paste.author %}by <em><a href="{{ url_for('author', author=paste.author) }}">{{ paste.author }}</a></em>{% endif %}
     as {{ paste.human_language }}
     <div class="highlighted">
-      {{ paste.highlighted|safe }}
+      {{ paste.highlighted|safe|replace('\t', '  ') }}
     </div>
   </div>
 
