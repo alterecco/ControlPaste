@@ -7,7 +7,7 @@
 
   <script type="text/javascript">
       var RecaptchaOptions = {
-          theme : "clean"
+          theme : "blackglass"
       }
   </script>
 
@@ -37,12 +37,6 @@
                 <input type="checkbox" name="private" id="private" {% if private %}checked{% endif %} />
             </td>
         </tr>
-        <tr class="hullahoop">
-            <td width="15%" class="label">Really Paste:</td>
-            <td>
-                <input type="checkbox" name="really" id="really" {% if really %}checked{% endif %} />
-            </td>
-        </tr>
         <tr>
             <td width="15%" class="label">Language:</td>
             <td>
@@ -67,8 +61,7 @@
         <tr>
             <td width="15%" class="label">Captcha:</td>
             <td>
-                <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k={{ recaptcha_public_key }}">
-                </script>
+                <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k={{ recaptcha_public_key }}"></script>
             </td>
         </tr>
         <tr>

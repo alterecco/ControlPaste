@@ -308,8 +308,8 @@ textarea {
 
 /* HONEYPOT */
 
-.hullahoop {
-  display: none;
+#recaptcha_response_field {
+  background-color: #cccccc;
 }
 
 /* FOOTER */
