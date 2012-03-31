@@ -2,6 +2,9 @@ import time
 from random import random
 from hashlib import sha1
 
+import requests
+from config import config
+
 from flask import render_template
 from flask import request
 from flask import redirect
@@ -42,9 +45,18 @@ def new():
     private = False
 
     if request.method == 'POST':
-        ## first we check our honeypot
-        if 'really' not in request.form:
+        ## first we check our captcha
 
+        payload = { 'privatekey' : config['recaptcha_private_key']
+                  , 'remoteip' : request.remote_addr
+                  , 'challenge' : request.form['recaptcha_challenge_field']
+                  , 'response' : request.form['recaptcha_response_field']
+                  }
+        response = requests.post("http://www.google.com/recaptcha/api/verify", data=payload)
+
+        #print response.text.split('\n')
+
+        if response.text.split('\n')[0] == 'true':
             code = request.form['code']
             language = request.form['language']
             author = request.form['author']
@@ -75,6 +87,7 @@ def new():
         language=language,
         languages=languages,
         preferred=preferred_languages,
+        recaptcha_public_key = config['recaptcha_public_key']
     )
 
 @app.route('/view/<uri>/')
