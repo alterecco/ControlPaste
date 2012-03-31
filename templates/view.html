@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{%block title %}Viewing Paste: {{ paste.uri }} - {{ super() }}{% endblock %}
+{%block title %}Viewing Paste: {{ paste.uri }}{% if paste.title %} - {{ paste.title }}{% endif %} - {{ super() }}{% endblock %}
 {%block caption %}Viewing Paste: {{ paste.uri }}{% endblock %}
 
 {% block content %}
