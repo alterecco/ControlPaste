@@ -20,7 +20,7 @@ from ControlPaste.database import db
 from ControlPaste.models import Paste
 from ControlPaste.lib.hilite import languages, preferred_languages
 
-app.secret_key = 'cup%oapho7yuaN7IexaiNg8tichi7Hir6igi'
+app.secret_key = config['secret_key']
 
 @app.before_request
 def before_request():
@@ -43,20 +43,22 @@ def new():
     language = session.get('language', 'text')
     parent = None
     private = False
+    verified = session['verified']
 
     if request.method == 'POST':
-        ## first we check our captcha
+        ## if user is not verified, then we check a captcha
 
-        payload = { 'privatekey' : config['recaptcha_private_key']
-                  , 'remoteip' : request.remote_addr
-                  , 'challenge' : request.form['recaptcha_challenge_field']
-                  , 'response' : request.form['recaptcha_response_field']
-                  }
-        response = requests.post("http://www.google.com/recaptcha/api/verify", data=payload)
+        if not verified:
 
-        #print response.text.split('\n')
+            payload = { 'privatekey' : config['recaptcha_private_key']
+                      , 'remoteip' : request.remote_addr
+                      , 'challenge' : request.form['recaptcha_challenge_field']
+                      , 'response' : request.form['recaptcha_response_field']
+                      }
+            response = requests.post("http://www.google.com/recaptcha/api/verify", data=payload)
 
-        if response.text.split('\n')[0] == 'true':
+        if verified or response.text.split('\n')[0] == 'true':
+            session['verified'] = True
             code = request.form['code']
             language = request.form['language']
             author = request.form['author']
@@ -87,7 +89,8 @@ def new():
         language=language,
         languages=languages,
         preferred=preferred_languages,
-        recaptcha_public_key = config['recaptcha_public_key']
+        recaptcha_public_key=config['recaptcha_public_key'],
+        not_verified=(not verified)
     )
 
 @app.route('/view/<uri>/')
