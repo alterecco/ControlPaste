@@ -43,7 +43,7 @@ def new():
     language = session.get('language', 'text')
     parent = None
     private = False
-    verified = session['verified']
+    verified = session.get('verified')
 
     if request.method == 'POST':
         ## if user is not verified, then we check a captcha
